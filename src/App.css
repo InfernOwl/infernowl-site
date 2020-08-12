@@ -1,38 +1,107 @@
+/* CSS HEX
+--orchid-crayola: #f397d6ff;
+--tart-orange: #ff4134ff;
+--dark-sienna: #280003ff;
+--chrome-yellow: #ffaa00ff;
+--nyanza: #d0e3ccff;
+--rich-black-fogra-39: #080708ff;
+
+ CSS HSL
+--orchid-crayola: hsla(319, 79%, 77%, 1);
+--tart-orange: hsla(4, 100%, 60%, 1);
+--dark-sienna: hsla(356, 100%, 8%, 1);
+--chrome-yellow: hsla(40, 100%, 50%, 1);
+--nyanza: hsla(110, 29%, 85%, 1);
+--rich-black-fogra-39: hsla(300, 7%, 3%, 1);
+*/
+
 .App {
-  text-align: center;
+    text-align: center;
 }
 
 .App-logo {
-  height: 40vmin;
-  pointer-events: none;
+    height: 40vmin;
+    pointer-events: none;
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+    .App-logo {
+        animation: App-logo-spin infinite 20s linear;
+    }
 }
 
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+    background-color: #323031;
+    min-height: 100vh;
+    /*display: flex;*/
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: #ffc857;
 }
 
 .App-link {
-  color: #61dafb;
+    color: #ffc857;
 }
 
 @keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.bg-light {
+    background-color: #db3a34!important;
+}
+
+.stream-wrapper {
+    align-content: center;
+    width: 100%;
+    height: 80vh;
+}
+
+.twitch-embed {
+    width: 100%;
+    height: 100%;
+}
+
+.content-wrapper {
+    width: 100vw;
+    height: 45vh;
+    position: absolute;
+    z-index: 3;
+}
+
+.lower-wrapper {
+    width: 100%;
+    height: 100%;
+    display: inline-flex;
+}
+
+.twitter-feed {
+    height: 90vh;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    min-width: 25vw;
+}
+
+.info {
+    text-align: start;
+    width: 100%;
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+
+.card {
+    background-color: #323031;
+}
+
+.card-header {}
+
+.btn-link {
+    background-color: #084c61;
 }
