@@ -16,10 +16,11 @@
     .content-wrapper.lightMode {
         --background: #f6f6f4ff;
         --icon: #dadad2ff;
-        --red: #EB6F78;
+        --red: #EB6F78ff;
         --orange: #f0803cff;
         --menu: #97c3edff;
-        --links: #342f37ff;
+        --links: #996EC4ff;
+        --inverse: #342f37ff;
     }
     
     .content-wrapper.darkMode {
@@ -27,8 +28,9 @@
         --icon: #dadad2ff;
         --red: #e43d56ff;
         --orange: #f06714ff;
-        --menu: #223196;
+        --menu: #223196ff;
         --links: #00d394ff;
+        --inverse: #C4C9D4ff;
     }
     /* Google Font Imports */
     
@@ -288,4 +290,28 @@
     
     .card-header {}
     
-    .btn-link {}
+    .btn {
+        font-size: 1.5rem;
+        font-family: 'Rubik';
+        margin-right: 3%;
+        color: var(--links);
+        background-color: var(--menu);
+    }
+
+    .btn:hover {
+        background-color: var(--red);
+
+    }
+
+    .btn:active {
+        background-color: var(--red);
+    }
+    
+    .btn-link {
+        font-weight: 800;
+    }
+
+    .btn-link:hover {
+        color: var(--inverse);
+        text-decoration: none;
+    }

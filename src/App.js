@@ -27,6 +27,7 @@ class Content extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+            email: "infernowltwitch@gmail.com",
             i: false,
             palette: false, // Controls light and dark mode palettes. light=false, dark=true (As it should be).
             contentWrapper: 'content-wrapper',
@@ -110,7 +111,7 @@ class Content extends React.Component {
     rel = "noopener noreferrer"><img className="icon" src={twitterIcon} alt="Twitter"></img></a>
                         <a href="https://discord.gg/zzezK2v" title="Discord" alt="Discord" target = "_blank" 
     rel = "noopener noreferrer"><img className="icon" src={discordIcon} alt="Discord"></img></a>
-                        <a href="mailto:infernowltwitch@gmail.com" title="Email" alt="Email" target = "_blank" 
+                        <a href={"mailto:" + this.state.email} title="Email" alt="Email" 
     rel = "noopener noreferrer"><img className="icon" src={emailIcon} alt="Email"></img></a>
                         <a href="https://github.com/InfernOwl" title="Github" alt="Github" target = "_blank" 
     rel = "noopener noreferrer"><img className="icon" src={githubIcon} alt="Github"></img></a>
@@ -148,7 +149,8 @@ class Content extends React.Component {
                             <Accordion.Collapse eventKey="1">
                                 <Card.Body>
                                     <div className="schedule-wrapper text">
-                                        <p>This is where my schedule would go</p>
+                                        <p>Stream Schedule TBA</p>
+                                        <p>Stay Tuned!</p> 
                                     </div>
                                 </Card.Body>
                             </Accordion.Collapse>
