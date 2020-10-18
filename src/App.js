@@ -11,6 +11,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import { Nav, Accordion, Card, Button } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
+import { render } from '@testing-library/react';
 
 
 
@@ -80,46 +81,11 @@ class Content extends React.Component {
         }
     }
     
-    expandMenu() {
-        if (!this.state.i) {
-            //Pass element to be transformed and start transformation
-            document.getElementById("radialMenu").style.transform='translate(-50%, -50%) scale(1)';
-            this.setState({i: true});
-
-            //Remove the Pulse animation for owlImage
-            document.getElementById('owlImage').style.animation='none';
-        } else if (this.state.i) {
-            //reverse transformation
-            document.getElementById("radialMenu").style.transform='translate(-50%, -50%) scale(0)';
-            this.setState({i: false});
-
-            //Add back animation for owlImage
-            document.getElementById('owlImage').style.animation='pulse-black 2s infinite';
-        }
-    }
+    
 
     render() {
         return (
             <div className={this.state.contentWrapper} onLoad={(e) => this.modeSet()}>
-                <div className="logoWipe">
-                    
-                    <img className="owlImage" id="owlImage" src={owlImage} alt="InfernOwl" onClick={(e) => this.expandMenu(e)}/>
-                    <div className="radialMenu" id="radialMenu">
-                        <a href="https://twitch.tv/infernowl" title="Twitch" alt="Twitch" target = "_blank" 
-    rel = "noopener noreferrer"><img className="icon" src={twitchIcon} alt="Twitch"></img></a>
-                        <a href="https://twitter.com/theinfernowl" title="Twitter" alt="Twitter" target = "_blank" 
-    rel = "noopener noreferrer"><img className="icon" src={twitterIcon} alt="Twitter"></img></a>
-                        <a href="https://discord.gg/zzezK2v" title="Discord" alt="Discord" target = "_blank" 
-    rel = "noopener noreferrer"><img className="icon" src={discordIcon} alt="Discord"></img></a>
-                        <a href={"mailto:" + this.state.email} title="Email" alt="Email" 
-    rel = "noopener noreferrer"><img className="icon" src={emailIcon} alt="Email"></img></a>
-                        <a href="https://github.com/InfernOwl" title="Github" alt="Github" target = "_blank" 
-    rel = "noopener noreferrer"><img className="icon" src={githubIcon} alt="Github"></img></a>
-                    </div>
-
-                    <div className="nameText text">InfernOwl</div>
-                </div>
-
                 <div className="info">
                     <Accordion defaultActiveKey="0">
                         <Card>
@@ -167,9 +133,43 @@ class Content extends React.Component {
                     <img className="bulb lightIcon" id="bulb" src={this.state.bulbImage} alt="light bulb" onClick={() => this.modeChange()} />
                 </div>
             </div>   
+        );
+    }
+}
 
+class Header extends React.Component {
 
-            
+    constructor(props) {
+        super(props);
+        this.state = {
+            i: false,
+            palette: false, // Controls light and dark mode palettes. light=false, dark=true (As it should be).
+            contentWrapper: 'content-wrapper',
+            bulbImage: offBulbIcon
+        }
+    }
+
+    render() {
+        return (
+            <Navbar className="header" expand="lg" sticky="top">
+                <Navbar.Brand href="/">
+                    <img className="owlImage" id="owlImage" src={owlImage} alt="InfernOwl"/>
+                </Navbar.Brand>
+                <Navbar.Brand href="/">
+                    <div className="nameText text">InfernOwl</div>
+                </Navbar.Brand>
+                <Navbar.Toggle aria-controls="basic-navbar-nav"/>
+                <Navbar.Collapse id="basic-navbar-nav">
+                    <Nav className="navClass">
+                        <Nav.Link href="https://twitch.tv/infernowl" title="Twitch" alt="Twitch" target = "_blank" rel = "noopener noreferrer" className="linkNav"><img className="icon" src={twitchIcon} alt="Twitch"></img><p className="mobileNav">Twitch</p></Nav.Link>
+                        <Nav.Link href="https://twitter.com/theinfernowl" title="Twitter" alt="Twitter" target = "_blank" rel = "noopener noreferrer" className="linkNav"><img className="icon" src={twitterIcon} alt="Twitter"></img><p className="mobileNav">Twitter</p></Nav.Link>
+                        <Nav.Link href="https://discord.gg/zzezK2v" title="Discord" alt="Discord" target = "_blank" rel = "noopener noreferrer" className="linkNav"><img className="icon" src={discordIcon} alt="Discord"></img><p className="mobileNav">Discord</p></Nav.Link>
+                        <Nav.Link href="mailto:infernowltwitch@gmail.com" title="Email" alt="Email" target = "_blank" rel = "noopener noreferrer" className="linkNav"><img className="icon" src={emailIcon} alt="Email"></img><p className="mobileNav">Email</p></Nav.Link>
+                        <Nav.Link href="https://github.com/InfernOwl" title="Github" alt="Github" target = "_blank" rel = "noopener noreferrer" className="linkNav"><img className="icon" src={githubIcon} alt="Github"></img><p className="mobileNav">Github</p></Nav.Link>
+                    </Nav>
+                </Navbar.Collapse>
+                
+            </Navbar>
         );
     }
 }
@@ -178,55 +178,13 @@ function App() {
     return ( 
         <div className="App" >
             <header className="App-header" >
+                <Header></Header>
                 <Content></Content>
+            
             </header >
             
         </div>
     );
 }
 
-/*<img src={logo}
-                    className="App-logo"
-                    alt="logo" />
-                <p>Edit <code > src / App.js </code> and save to reload. </p> 
-                <a className="App-link"
-                            href="https://reactjs.org"
-                            target="_blank"
-                            rel="noopener noreferrer" >
-                            Learn React 
-                </a > 
-                <Carousel>
-                        <Carousel.Item>
-                            
-                        </Carousel.Item>
-                        <Carousel.Item>
-                            <p></p>
-                        </Carousel.Item>
-                    </Carousel>
-
-
-            
-            <Navbar bg="light" expand="lg">
-                <Navbar.Brand href="/">InfernOwl</Navbar.Brand>
-                <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                <Navbar.Collapse id="basic-navbar-nav">
-                    <Nav className="Links">
-                        <Nav.Link href="https://twitch.tv/infernowl">Twitch</Nav.Link>
-                        <Nav.Link href="https://twitter.com/theinfernowl">Twitter</Nav.Link>
-                        <Nav.Link href="https://discord.gg/zzezK2v">Discord</Nav.Link>
-                        <Nav.Link href="mailto:infernowltwitch@gmail.com">Email</Nav.Link>
-                        <Nav.Link href="https://github.com/InfernOwl">Github</Nav.Link>
-                    </Nav>
-                </Navbar.Collapse>
-            </Navbar>
-
-            
-
-
-            <div className="lower-wrapper">
-                <div className="twitter-feed">
-                    <a className="twitter-timeline" data-width="30vw" data-height="100%" data-theme="dark" href="https://twitter.com/TheInfernOwl?ref_src=twsrc%5Etfw">TheInfernOwl</a>
-                </div>
-            </div>
-                */
 export default App;

@@ -13,7 +13,7 @@
     /* Color Palettes */
     /* Light Mode */
     
-    .content-wrapper.lightMode {
+    .App.lightMode {
         --background: #f6f6f4ff;
         --icon: #dadad2ff;
         --red: #EB6F78ff;
@@ -23,7 +23,7 @@
         --inverse: #342f37ff;
     }
     
-    .content-wrapper.darkMode {
+    .App.darkMode {
         --background: #181c3aff;
         --icon: #dadad2ff;
         --red: #e43d56ff;
@@ -37,7 +37,6 @@
     @import url('https://fonts.googleapis.com/css?family=Oleo+Script&display=swap');
     @import url('https://fonts.googleapis.com/css?family=Rubik&display=swap');
     .App {
-        text-align: center;
         overflow-x: hidden;
     }
     
@@ -54,7 +53,7 @@
     
     .App-header {
         background-color: var(--background);
-        min-height: 100vh;
+        min-height: 10vh;
         /*display: flex;*/
         flex-direction: column;
         align-items: center;
@@ -82,37 +81,25 @@
     .content-wrapper {
         width: 100vw;
         height: 100vh;
-        position: absolute;
+        /*position: absolute;
         overflow-x: hidden;
+        */
         background-color: var(--background);
     }
     
-    .logoWipe {
+    .header {
         background-color: var(--background);
-        height: 100%;
-        position: fixed;
-        left: 0;
+        height: 10%;
+        width: 100%;
+        padding: 1%;
+        display: inline-flex;
     }
     
     .owlImage {
         background-color: var(--orange);
-        position: absolute;
-        z-index: 2;
-        max-height: 30vh;
-        max-width: 30vh;
-        top: 50vh;
-        left: 50vw;
+        max-height: 10vh;
         border-radius: 50%;
-        transform: translate(-50%, -50%);
-        animation: pulse-black 2s infinite;
-        /*
-        -webkit-mask-position: 0 0;
-        -webkit-mask-size: auto;
-        -webkit-mask-image: -webkit-radial-gradient(circle, black, black, black, black, black, black, black, rgb(0, 0, 0, 0), rgb(0, 0, 0, 0), rgb(0, 0, 0, 0), rgb(0, 0, 0, 0));
-        -webkit-mask-position: 0 0;
-        -webkit-mask-size: 60vw 60vh;
-        -webkit-mask-image: -webkit-linear-gradient(135deg, rgb(0, 0, 0, 0), rgb(0, 0, 0, 0), rgb(0, 0, 0, 0), rgb(0, 0, 0, 0), black, black, black, black, black, black, black, black, black);
-        */
+        margin-right: 2%;
     }
     
     @keyframes pulse-black {
@@ -130,24 +117,24 @@
         }
     }
     
-    .radialMenu {
-        transition: 1s;
-        background-color: var(--menu);
-        height: 60vh;
-        width: 60vh;
-        border-radius: 50%;
-        position: absolute;
-        z-index: 1;
-        top: 50vh;
-        left: 50vw;
-        transform: translate(-50%, -50%) scale(0.01);
+    .icon {
+        display: none;
     }
     
-    .icon {
-        height: 10vh;
-        width: 10vh;
-        border-radius: 50%;
-        background-color: var(--icon);
+    .mobileNav {
+        display: inline;
+    }
+    
+    @media (min-width: 992px) {
+        .mobileNav {
+            display: none;
+        }
+        .icon {
+            display: block;
+            height: 5vh;
+            border-radius: 50%;
+            background-color: var(--icon);
+        }
     }
     
     .lightIcon {
@@ -166,18 +153,25 @@
         background-color: var(--red);
     }
     
-    a {
+    .brandNav {
+        display: contents;
+    }
+    
+    .navClass {
+        display: contents;
+    }
+    
+    .linkNav {
         display: inline-block;
-        position: absolute;
         font-size: 15px;
+        margin: 2%;
         color: var(--background);
     }
     
     a:hover {
         color: var(--orange);
     }
-    
-    a:nth-child(1) {
+    /*a:nth-child(1) {
         position: absolute;
         top: 12%;
         left: 50%;
@@ -211,17 +205,12 @@
         left: 14%;
         transform: translate(-50%, -50%);
     }
+    */
     
     .nameText {
-        position: absolute;
-        top: 90vh;
-        left: 50vw;
         font-family: 'Oleo Script';
         font-weight: 700;
-        font-size: 10vh;
-        transform: translate(-53%, -50%);
-        text-align: center;
-        z-index: 5000;
+        font-size: 2em;
     }
     
     .bg-light {
@@ -260,19 +249,9 @@
         font-size: 7vh;
     }
     
-    .twitter-feed {
-        height: 90vh;
-        padding-top: 2%;
-        padding-bottom: 2%;
-        min-width: 25vw;
-    }
-    
     .info {
         text-align: start;
-        width: 100vw;
         height: 100vh;
-        position: absolute;
-        top: 100vh;
         background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgb(187, 187, 187));
     }
     
@@ -286,32 +265,4 @@
         top: 2vh;
         right: 0vh;
         transform: translate(-100%, 0%);
-    }
-    
-    .card-header {}
-    
-    .btn {
-        font-size: 1.5rem;
-        font-family: 'Rubik';
-        margin-right: 3%;
-        color: var(--links);
-        background-color: var(--menu);
-    }
-
-    .btn:hover {
-        background-color: var(--red);
-
-    }
-
-    .btn:active {
-        background-color: var(--red);
-    }
-    
-    .btn-link {
-        font-weight: 800;
-    }
-
-    .btn-link:hover {
-        color: var(--inverse);
-        text-decoration: none;
     }
