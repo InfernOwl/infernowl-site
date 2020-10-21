@@ -13,7 +13,7 @@
     /* Color Palettes */
     /* Light Mode */
     
-    .App.lightMode {
+    .content-wrapper.lightMode {
         --background: #f6f6f4ff;
         --icon: #dadad2ff;
         --red: #EB6F78ff;
@@ -23,7 +23,7 @@
         --inverse: #342f37ff;
     }
     
-    .App.darkMode {
+    .content-wrapper.darkMode {
         --background: #181c3aff;
         --icon: #dadad2ff;
         --red: #e43d56ff;
@@ -53,15 +53,12 @@
     
     .App-header {
         background-color: var(--background);
-        min-height: 10vh;
-        /*display: flex;*/
+        height: 100vh;
         flex-direction: column;
         align-items: center;
         justify-content: center;
         font-size: calc(10px + 2vmin);
-    }
-    
-    .App-link {}
+    }aQZAQ
     
     .text {
         color: var(--red);
@@ -80,7 +77,7 @@
     
     .content-wrapper {
         width: 100vw;
-        height: 100vh;
+        height: 90%;
         /*position: absolute;
         overflow-x: hidden;
         */
@@ -251,8 +248,21 @@
     
     .info {
         text-align: start;
-        height: 100vh;
+        height: 100%;
         background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgb(187, 187, 187));
+    }
+
+    .accordion {
+        display: flex;
+        height: 100%;
+    }
+
+    .titleCards {
+        width: 10%;
+    }
+
+    .infoCards {
+        width: 90%;
     }
     
     .card {
@@ -261,8 +271,6 @@
     }
     
     .modeToggle {
-        position: fixed;
-        top: 2vh;
-        right: 0vh;
+        float: right;
         transform: translate(-100%, 0%);
     }

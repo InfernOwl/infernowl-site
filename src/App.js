@@ -11,7 +11,6 @@ import Navbar from 'react-bootstrap/Navbar';
 import { Nav, Accordion, Card, Button } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
-import { render } from '@testing-library/react';
 
 
 
@@ -24,130 +23,55 @@ function Stream() {
 }
 
 class Content extends React.Component {
-
-    constructor(props) {
-        super(props);
-        this.state = {
-            email: "infernowltwitch@gmail.com",
-            i: false,
-            palette: false, // Controls light and dark mode palettes. light=false, dark=true (As it should be).
-            contentWrapper: 'content-wrapper',
-            bulbImage: offBulbIcon
-        }
-    }
-
-    // Saves palette selection to localStorage to save for future site visits
-    modeStorage() {
-        if (this.state.palette) {
-            localStorage.setItem('mode', 'dark');
-        }  else {
-            localStorage.setItem('mode', 'light');
-        }
-    }
-
-    // Toggles light and dark mode palettes when called.
-    modeChange(e) {
-        //
-        if (this.state.palette) {
-            this.setState({contentWrapper: 'content-wrapper darkMode', bulbImage: offBulbIcon});
-            
-        } else {
-            this.setState({contentWrapper: 'content-wrapper lightMode', bulbImage: onBulbIcon});
-        }
-        
-        this.setState({palette: !this.state.palette});
-        this.modeStorage();
-    }
-
-    // Sets palette onLoad if there is light or dark mode palette data in localStorage
-    modeSet() {
-        console.log(this);
-        if (localStorage.getItem('mode') != null) {
-            switch (localStorage.getItem('mode')) {
-                case 'light':
-                    this.setState({contentWrapper: 'content-wrapper lightMode', bulbImage: onBulbIcon});
-                    break;
-                case 'dark':
-                    this.setState({contentWrapper: 'content-wrapper darkMode', bulbImage: offBulbIcon});
-                    break;
-                default:
-                    // Defaults to dark mode
-                    this.setState({contentWrapper: 'content-wrapper darkMode', bulbImage: offBulbIcon});
-                    break;
-            }
-        } else {
-            // Defaults to dark mode
-            this.setState({contentWrapper: 'content-wrapper darkMode', bulbImage: offBulbIcon});
-        }
-    }
-    
-    
-
     render() {
         return (
-            <div className={this.state.contentWrapper} onLoad={(e) => this.modeSet()}>
-                <div className="info">
-                    <Accordion defaultActiveKey="0">
-                        <Card>
-                            <Card.Header>
-                            <Accordion.Toggle as={Button} variant="link" eventKey="0">
-                                About Me
-                            </Accordion.Toggle>
-                            <Accordion.Toggle as={Button} variant="link" eventKey="1">
-                                Stream Schedule
-                            </Accordion.Toggle>
-                            <Accordion.Toggle as={Button} variant="link" eventKey="2">
-                                Twitch
-                            </Accordion.Toggle>
-                            </Card.Header>
-                            
-                        </Card>
-                        <Card>
-                            <Accordion.Collapse eventKey="0">
-                                <Card.Body>
-                                    <div className="about-me-wrapper text">
-                                        <p>Hi! My name's InfernOwl!</p>
-                                        <p>I'm a creative variety streamer on Twitch who's known to get into casual playthroughs, competitive games, and speedrunning.</p>
-                                        <p>In my free time I like to cook, code, and play music.</p>
-                                    </div>
-                                </Card.Body>
-                            </Accordion.Collapse>
-                            <Accordion.Collapse eventKey="1">
-                                <Card.Body>
-                                    <div className="schedule-wrapper text">
-                                        <p>Stream Schedule TBA</p>
-                                        <p>Stay Tuned!</p> 
-                                    </div>
-                                </Card.Body>
-                            </Accordion.Collapse>
-                            <Accordion.Collapse eventKey="2">
-                                <Card.Body>
-                                    <Stream></Stream>
-                                </Card.Body>
-                            </Accordion.Collapse>
-                        </Card>
-                    </Accordion>
-                </div>
-                
-                <div className="modeToggle">
-                    <img className="bulb lightIcon" id="bulb" src={this.state.bulbImage} alt="light bulb" onClick={() => this.modeChange()} />
-                </div>
-            </div>   
+            <div className="info">
+                <Accordion defaultActiveKey="0">
+                    <Card className="titleCards">
+                        <Card.Header>
+                        <Accordion.Toggle as={Button} variant="link" eventKey="0">
+                            About Me
+                        </Accordion.Toggle>
+                        <Accordion.Toggle as={Button} variant="link" eventKey="1">
+                            Stream Schedule
+                        </Accordion.Toggle>
+                        <Accordion.Toggle as={Button} variant="link" eventKey="2">
+                            Twitch
+                        </Accordion.Toggle>
+                        </Card.Header>
+                        
+                    </Card>
+                    <Card className="infoCards">
+                        <Accordion.Collapse eventKey="0">
+                            <Card.Body>
+                                <div className="about-me-wrapper text">
+                                    <p>Hi! My name's InfernOwl!</p>
+                                    <p>I'm a creative variety streamer on Twitch who's known to get into casual playthroughs, competitive games, and speedrunning.</p>
+                                    <p>In my free time I like to cook, code, and play music.</p>
+                                </div>
+                            </Card.Body>
+                        </Accordion.Collapse>
+                        <Accordion.Collapse eventKey="1">
+                            <Card.Body>
+                                <div className="schedule-wrapper text">
+                                    <p>Stream Schedule TBA</p>
+                                    <p>Stay Tuned!</p> 
+                                </div>
+                            </Card.Body>
+                        </Accordion.Collapse>
+                        <Accordion.Collapse eventKey="2">
+                            <Card.Body>
+                                <Stream></Stream>
+                            </Card.Body>
+                        </Accordion.Collapse>
+                    </Card>
+                </Accordion>
+            </div> 
         );
     }
 }
 
 class Header extends React.Component {
-
-    constructor(props) {
-        super(props);
-        this.state = {
-            i: false,
-            palette: false, // Controls light and dark mode palettes. light=false, dark=true (As it should be).
-            contentWrapper: 'content-wrapper',
-            bulbImage: offBulbIcon
-        }
-    }
 
     render() {
         return (
@@ -168,8 +92,77 @@ class Header extends React.Component {
                         <Nav.Link href="https://github.com/InfernOwl" title="Github" alt="Github" target = "_blank" rel = "noopener noreferrer" className="linkNav"><img className="icon" src={githubIcon} alt="Github"></img><p className="mobileNav">Github</p></Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
+
+                <div className="modeToggle" onClick={this.props.clickHandler}>
+                    <img className="bulb lightIcon" id="bulb" src={this.props.bulbImage} alt="light bulb" />
+                </div>
                 
             </Navbar>
+        );
+    }
+}
+
+class Wrapper extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            palette: false, // Controls light and dark mode palettes. light=false, dark=true (As it should be).
+            contentWrapper: 'content-wrapper',
+            bulbImage: offBulbIcon
+        }
+    }
+
+    // Saves palette selection to localStorage to save for future site visits
+    modeStorage() {
+        if (this.state.palette) {
+            localStorage.setItem('mode', 'dark');
+        }  else {
+            localStorage.setItem('mode', 'light');
+        }
+    }
+
+    // Toggles light and dark mode palettes when called.
+    modeChange(e) {
+        console.log("This is a test");
+        //
+        if (this.state.palette) {
+            this.setState({contentWrapper: 'content-wrapper darkMode', bulbImage: offBulbIcon});
+            
+        } else {
+            this.setState({contentWrapper: 'content-wrapper lightMode', bulbImage: onBulbIcon});
+        }
+        
+        this.setState({palette: !this.state.palette});
+        this.modeStorage();
+    }
+
+    // Sets palette onLoad if there is light or dark mode palette data in localStorage
+    modeSet() {
+        if (localStorage.getItem('mode') != null) {
+            switch (localStorage.getItem('mode')) {
+                case 'light':
+                    this.setState({contentWrapper: 'content-wrapper lightMode', bulbImage: onBulbIcon});
+                    break;
+                case 'dark':
+                    this.setState({contentWrapper: 'content-wrapper darkMode', bulbImage: offBulbIcon});
+                    break;
+                default:
+                    // Defaults to dark mode
+                    this.setState({contentWrapper: 'content-wrapper darkMode', bulbImage: offBulbIcon});
+                    break;
+            }
+        } else {
+            // Defaults to dark mode
+            this.setState({contentWrapper: 'content-wrapper darkMode', bulbImage: offBulbIcon});
+        }
+    }
+
+    render() {
+        return (
+            <div className={this.state.contentWrapper} onLoad={(e) => this.modeSet()} >
+                <Header bulbImage={this.state.bulbImage} clickHandler={() => this.modeChange()}></Header>
+                <Content></Content>
+            </div>
         );
     }
 }
@@ -178,9 +171,7 @@ function App() {
     return ( 
         <div className="App" >
             <header className="App-header" >
-                <Header></Header>
-                <Content></Content>
-            
+                <Wrapper></Wrapper>
             </header >
             
         </div>
